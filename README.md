@@ -1,10 +1,10 @@
-\# ASP.NET User Management System (Up to Profile Page)
+\# ASP.NET Employee Management System (Up to Profile Page)
 
 
 
 \## 📘 Project Overview
 
-This project is a beginner-friendly User Management System built using ASP.NET Web Forms, C#, ADO.NET, and SQL Server.
+This project is a beginner-friendly Employee Management System built using ASP.NET Web Forms, C#, ADO.NET, and SQL Server.
 
 It allows users to:
 
@@ -97,28 +97,15 @@ The project uses Stored Procedures for database operations and Session Managemen
 \### 1️⃣ sp\_InsertUser
 
 ```sql
-
 CREATE PROCEDURE sp\_InsertUser
-
 &nbsp; @Name NVARCHAR(100),
-
 &nbsp; @Phone NVARCHAR(15),
-
 &nbsp; @Email NVARCHAR(100)
-
 AS
-
 BEGIN
-
 &nbsp; INSERT INTO UserInfo (Name, Phone, Email)
-
 &nbsp; VALUES (@Name, @Phone, @Email);
-
 END;
-
-
-
-
 
 
 
@@ -131,9 +118,7 @@ CREATE PROCEDURE sp\_Login
 &nbsp; @Phone NVARCHAR(15)
 
 AS
-
 BEGIN
-
 &nbsp; SELECT COUNT(\*) FROM UserInfo WHERE Email=@Email AND Phone=@Phone;
 
 END;
@@ -147,15 +132,10 @@ END;
 3️⃣ sp\_GetUserProfile
 
 CREATE PROCEDURE sp\_GetUserProfile
-
-&nbsp; @Email NVARCHAR(100)
-
+@Email NVARCHAR(100)
 AS
-
 BEGIN
-
-&nbsp; SELECT Name, Phone, Email FROM UserInfo WHERE Email=@Email;
-
+ SELECT Name, Phone, Email FROM UserInfo WHERE Email=@Email;
 END;
 
 
@@ -163,88 +143,31 @@ END;
 
 
 🧭 Project Flow
-
-
-
 Registration → Login → Home → Profile → Logout
 
 
-
 🔒 Session Management
-
-
-
 When the user logs in, Session\["Email"] stores their email.
-
-
-
 Home and Profile pages check this session to allow only logged-in users.
-
-
-
 On Logout, Session.Clear() removes session data and redirects to Login page.
 
-
-
-
-
-
-
 ✅ How to Run the Project
-
-
-
 Open the project in Visual Studio.
-
-
-
 In SQL Server Management Studio (SSMS):
-
-
-
 Create a database named userdb.
-
-
-
 Create a table UserInfo with columns: Id, Name, Phone, Email.
 
 
 
 Create the three stored procedures shown above.
-
-
-
 Update your connection string in the code if needed.
-
-
-
 Set Login.aspx as the start page.
-
-
 
 Run the project → Register → Login → View Profile → Logout.
 
-
-
-
-
-
-
 Next Suggested Step:
-
-
-
 After completing this:
-
-
-
 Add Edit Profile Page (to update name or phone)
-
-
-
 Add Change Password Page (for security)
-
-
-
 Add Admin Page (to view all users)
 
